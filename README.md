@@ -1,2 +1,2 @@
-# JsSiteTemplate
-Site Template for JS Projects
+# Evengine
+A Javascript coding exercise
