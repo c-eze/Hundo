@@ -1,8 +1,32 @@
 :root {
+    /* colors */
     --primary-color: #1d5888;
-    --secondary-color: #ff993b;
+    --secondary-color: #FF3131;
+    --heading-bg-color: #e2e3e5; /* Bootstrap Secondary Sub Color */
+    --heading-color: #6c757d; 
     --dark-color: #292929;
     --white-color: #e7e7e7;
+}
+
+.btnColor {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.odd {
+    font-weight: 100;
+}
+
+.even {
+    font-weight: bold;
+    font-size: large;
+}
+
+.logoFont {
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
 }
 
 body {
@@ -18,7 +42,20 @@ footer {
     padding-right: 1rem;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1 {
+    color: var(--secondary-color);
+}
+
+h2 {
+    background-color: var(--heading-bg-color);
+    color: var(--heading-color);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    padding: 0rem 1rem;
+}
+
+h3,h4,h5,h6 {
     color: var(--primary-color);
 }
 
@@ -30,6 +67,12 @@ footer .social>a {
 footer .social>a:hover {
     opacity: 0.90;
     color: var(--secondary-color);
+}
+
+.devicons {
+    font-size: 3rem;
+    width: 100%;
+    max-width: 400px;
 }
 
 .bsicon {

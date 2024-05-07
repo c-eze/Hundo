@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Chikere Ezekannagha</title>
+    <title>Evengine: A Coding Project By Chikere Ezekannagha</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,6 +13,11 @@
 
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 
+    <!-- Google Fonts for Teko -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+
     <link href="/css/site.css" rel="stylesheet"> 
     <link href="/css/prism.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
@@ -21,15 +26,15 @@
 <body class="d-flex flex-column h-100">
 <!-- === Nav Section === -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="/img/logo-no-background_white.png" class="d-inline-block align-text-top" 
-            width="32" height="26"> APP NAME</a>
+    <div class="container">
+        <a class="navbar-brand logoFont" href="#"><img src="/img/favicon-32x32.png" class="d-inline-block align-text-top" 
+            width="32" height="30"> EVENGINE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
@@ -40,7 +45,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/c-eze/Hundo">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="#">About</a>
@@ -52,39 +57,113 @@
 <!-- === Main Section === -->
 <main class="flex-shrink-0">
     <div class="container py-4 px-5 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+        <h1 class="border-1 border-bottom border-dark">The Code for Evengine</h1>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                    //Call Hello World
-                    function HelloWorld() {
-                        alert("Hello World");
-                    }
+                    //get the values from the Page
+//starts or controller function
+function getValues() {
+    //get values from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value; 
+
+    //Need to validate input
+    //parse into integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+        //call generateNumbers
+        let numbers = generateNumbers(startValue, endValue);
+
+        //call displayNumbers
+        displayNumbers(numbers);
+    } else {
+        alert("You must enter integers");
+    }
+}
+
+//generate numbers from the startValue to the endValue
+//logic function(s)
+function generateNumbers(sValue, eValue) {
+    let numbers = [];
+
+    //get all numbers from start to end    
+    for (let index = sValue; index <= eValue; index++) { 
+        //execute in a loop until index = eValue
+        numbers.push(index);
+    }
+
+    return numbers;
+}
+
+//display the numbers and mark even numbers bold
+//display or view functions
+function displayNumbers(numbers) {
+    let templateRows = "";
+
+    for (let index = 0; index < numbers.length; index++) {
+        let className = "even";
+        let number = numbers[index];
+
+        if (index % 5 == 0) {
+            //This line displays properly in the source file
+            templateRows += `<tr>`;
+        }
+
+        if (number % 2 == 0) {
+            className = "even"
+        }
+        else {
+            className = "odd"
+        }
+        //This line displays properly in the source file
+        templateRows += `<td class="${className}">${number}</td>`;
+
+        if ((index + 1) % 5 == 0) {
+            //This line displays properly in the source file
+            templateRows += `</tr>`;
+        }
+    }
+    document.getElementById("results").innerHTML = templateRows;
+}
                 </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                <p>The Code is structured in three functions.</p>
+                <h5>getValues</h5>
+                <p>This is a function that gets two values from an HTML form and parses them into integers. The integers
+                    are then passed to the function <span class="text-danger">generateNumbers</span> and then to the 
+                    function <span class="text-danger">displayNumbers.</span> for displaying of the numbers to the 
+                    screen.</p>
+                <h5>generateNumbers</h5>
+                <p>This is a function that takes two numbers and then uses the numbers to generate an array of numbers 
+                    using a for loop. The size of the array depends on the range of the two numbers. The number array is 
+                    then returned by the function. 
+                </p>
+                <h5>displayNumbers</h5>
+                <p>This is a function that takes an array of numbers and displays them onto an HTML web page using a for 
+                    loop. Odd numbers are displayed in regular text and even numbers are displayed in bold text.</p>
             </div>
         </div>
     </div>
 </main>
 <!-- === Footer Section === -->
-<footer class="footer mt-auto py-3 sticky-footer">
-    <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-lg-3 gy-2">
-            <div class="col order-last order-lg-first text-light">
-                <div><span class="text-muted">&copy;2021</span> Chikere | chikere.ezekannagha@gmail.com</div>
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-lg-3 gy-3">
+            <div class="col order-last order-lg-first text-light text-center text-lg-start">
+                <div><span class="text-muted">&copy;2024</span> Chikere</div>
             </div>
-            <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                <img src="/img/logo-no-background_white.png" alt="Chikere Ezekannagha Logo" height="24">
+            <div class="col d-flex justify-content-center">
+                <img src="/img/favicon-32x32.png" alt="Chikere Logo" height="45">
             </div>
-            <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
+            <div class="col d-flex justify-content-center justify-content-lg-end">
                 <div class="row">
-                    <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                    <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                    <div class="col social"><a href="https://www.linkedin.com/in/chikere-ezekannagha/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                    <div class="col social"><a href="https://github.com/c-eze/" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
                     <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     <div class="col social"><a href="#" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></div>
                 </div>
