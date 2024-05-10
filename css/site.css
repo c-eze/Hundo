@@ -47,12 +47,12 @@ h1 {
 }
 
 h2 {
-    background-color: var(--heading-bg-color);
+    /*background-color: var(--heading-bg-color);*/
     color: var(--heading-color);
-    text-transform: uppercase;
+    /*text-transform: uppercase;
     font-size: 1.5rem;
     letter-spacing: .1rem;
-    padding: 0rem 1rem;
+    padding: 0rem 1rem;*/
 }
 
 h3,h4,h5,h6 {
@@ -92,7 +92,7 @@ footer .social>a:hover {
 }
 
 .checklist >li i {
-    color: var(--secondary-color);
+    color: var(--heading-color);
 }
 
 code[class*="language-"],
